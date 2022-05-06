@@ -14,7 +14,7 @@ const style = {
   logoText: ` ml-[0.8rem] text-white font-semibold text-2xl`,
   headerItems: ` flex items-center justify-end`,
   headerItem: `text-white px-4 font-bold text-[#e6e9ed] hover:text-white cursor-pointer`,
-  headerIcon: `flex items-center justify-end bg-[#f797e7] text-white text-xl px-4 font-black rounded-full shadow-xl hover:bg-[#fcdef7] hover:text-[#f797e7] cursor-pointer`,
+  headerIcon: `right-10 absolute top-4 py-1 px-5 flex items-center justify-end bg-[#f797e7] text-white text-xl px-4 font-black rounded-full shadow-xl hover:bg-[#fcdef7] hover:text-[#f797e7] cursor-pointer`,
 }
 
 function Header() {
