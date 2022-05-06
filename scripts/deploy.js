@@ -1,10 +1,12 @@
+const hre = require("hardhat");
+
 async function main() {
-    const MyNFT = await ethers.getContractFactory("MyNFT")
+    const CryptoAidolContract = await ethers.getContractFactory("CryptoAidol")
   
     // Start deployment, returning a promise that resolves to a contract object
-    const myNFT = await MyNFT.deploy()
-    await myNFT.deployed()
-    console.log("Contract deployed to address:", myNFT.address)
+    const cryptoAidol = await CryptoAidolContract.deploy()
+    await cryptoAidol.deployed()
+    console.log("Contract deployed to address:", cryptoAidol.address)
   }
   
   main()

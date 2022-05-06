@@ -1,4 +1,4 @@
-import mintNFT from '../../scripts/mint-nft.js'
+// import mintNFT from '../../scripts/mint-nft.js'
 import Link from 'next/link'
 import {useState} from 'react'
 
@@ -20,7 +20,7 @@ function MintBottun () {
               method: "eth_requestAccounts",
             });
             setWalletAddress(accounts[0])
-            mintNFT("ipfs://QmQcxqVUJoefCzAKJ1iFneGu4NUa7jJ3gjqsSmJJXb7WQc")
+            // mintNFT("ipfs://QmQcxqVUJoefCzAKJ1iFneGu4NUa7jJ3gjqsSmJJXb7WQc")
           } catch (error) {
             console.log('Error connecting')
           }
