@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import cryptoaidolLogo from '../assets/cryptoaidolLogo.png'
 import { ethers } from 'ethers';
 
@@ -21,35 +21,76 @@ function Header() {
 
   const [walletAddress, setWalletAddress] = useState("")
   const [connBottunText, setConnBottunText] = useState('connect wallet')
+  const [correctNetwork, setCorrectNetwork] = useState(false)
 
   // Requests access to the user's META MASK WALLET
-  async function requestAccount() {
+  async function checkIfWalletIsConnected() {
     console.log('Requesting account...')
 
+    const { ethereum } = window
+    
     // Check if Meta Mask Extension exists 
-    if(window.ethereum) {
+    if(ethereum) {
       console.log('detected')
-
-      try {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setWalletAddress(accounts[0])
-        setConnBottunText('wallet connected')
-      } catch (error) {
-        console.log('Error connecting')
-      }
     } else {
-      alert('Meta Mask not detected')
+      alert('Pls Metamask not detected')
     }
+    
+    let accounts = await ethereum.request({ medthod: 'eth_accounts'})
+
+    if(accounts.length !== 0) {
+      console.log('Found authorized Account: ', accounts[0])
+      setWalletAddress(accounts[0])
+    } else {
+      console.log("No authorized account found")
+    }
+}
+
+
+const checkCorrectNetwork = async () => {
+  const { ethereum } = window
+  let chainId = await ethereum.request({ method: 'eth_chainId' })
+  console.log('Connected to chain:' + chainId)
+
+  const shibuyaChainId = '0x51'
+
+  if (chainId !== shibuyaChainId) {
+    setCorrectNetwork(false)
+  } else {
+    setCorrectNetwork(true)
   }
+}
+
+useEffect(() => {
+  // checkIfWalletIsConnected()
+  checkCorrectNetwork()
+}, [])
 
   // Create a provider to interact with a smart contract
-  async function connectWallet() {
-    if(typeof window.ethereum !== 'undefined') {
-      await requestAccount();
+  const connectWallet = async () => {
+    try {
+      const { ethereum } = window
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      if (!ethereum) {
+        console.log('Metamask not detected')
+        return
+      }
+      let chainId = await ethereum.request({ method: 'eth_chainId'})
+      console.log('Connected to chain:' + chainId)
+
+      const shibuyaChainId = '0x51'
+
+      if (chainId !== shibuyaChainId) {
+        alert('You are not connected to the Shibuya Testnet!')
+        return
+      }
+        
+      const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+
+      console.log('Found account', accounts[0])
+      setWalletAddress(accounts[0])
+    } catch (error) {
+      console.log('Error connecting to metamask', error)
     }
   }
 
@@ -79,7 +120,7 @@ function Header() {
       </div>
       <Link href="/">
         <div className={style.headerIcon}>
-          <button onClick={requestAccount}>
+          <button onClick={connectWallet}>
             {connBottunText}</button>
         </div>
       </Link>

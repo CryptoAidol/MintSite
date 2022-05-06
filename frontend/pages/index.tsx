@@ -6,6 +6,7 @@ import styles from '../styles/Home.module.css'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import MintBottun from '../components/MintBottun';
+import BaseURI from '../components/BaseURI'
 
 const Home: NextPage = () => {
   return (
@@ -13,7 +14,8 @@ const Home: NextPage = () => {
     <div className="">
       <Header />
       <MintBottun />
-      
+      <BaseURI />
+        
 
       <main className={styles.main}>
         <h1 className={styles.title}>
