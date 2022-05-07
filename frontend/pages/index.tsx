@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     <>
       <Header />
         <div className="flex flex-wrap justify-center bg-[url('/Cyrptoaidol_BG.png')] bg-no-repeat bg-cover">
-          <div className='px-44 py-44 text-center'>
+          <div className='px-44 py-52 text-center'>
             <h1 className="text-sm lg:text-5xl pt-1 text-[#4D4D4D] font-semibold ">Larn To Earn</h1>
             <h1 className="text-sm lg:text-5xl pt-8 text-[#4D4D4D] font-semibold ">Next Coming soon</h1>
             <Image className="object-none" src="/Cryptyaidle.svg" alt="Main Image" width={500} height={500}/>
@@ -26,7 +26,7 @@ const Home: NextPage = () => {
               <h1 className="text-sm lg:text-2xl pt-1 text-black font-semibold ">START DATE: Coming soon</h1>
               <h1 className="text-sm lg:text-2xl pt-1 text-black font-semibold ">14:00(UTC) | 23:00(JST)</h1>
               <h1 className="text-base lg:text-5xl pt-1 pb-2 text-black font-semibold "> {mintNum} / 3000</h1>
-              <h1><MintBottun /></h1>
+              <h1 className="text-base lg:text-5xl pt-1 pb-2 text-black font-semibold ">Sale is not yet</h1>
           </div>
         </div>
         <Footer />
