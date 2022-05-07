@@ -26,7 +26,11 @@ contract CryptoAidol is ERC721URIStorage {
 
     //すっぴんあすたんを表すぞ
     function _baseURI() internal pure override returns(string memory) {
-        return "https://sample.com";
+        return "http://localhost:3000/api/hello";
+    }
+
+    function testURI() public pure returns(string memory) {
+      return "http://localhost:3000/api/hello";
     }
 
     function magicalChange(string memory tokenURI) public onlyAidol {
@@ -43,12 +47,12 @@ contract CryptoAidol is ERC721URIStorage {
     }
 
     modifier onlyAidol() {
-      require(!_haveNFT[msg.sender], "You're already Aidol!");
+      require(!_haveNFT[msg.sender], "You've not opened the Aidol Door");
       _;
     }
 
     modifier onlyPeople() {
-      require(_haveNFT[msg.sender], "You've not opened the Aidol Door");
+      require(_haveNFT[msg.sender], "You're already Aidol!");
       _;
     }
 
