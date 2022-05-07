@@ -4,7 +4,10 @@ module.exports = {
      "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+      'background': "url('/public/Cyrptoaidol_BG.png')",
+    }},
   },
   plugins: [],
 }

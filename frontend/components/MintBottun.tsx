@@ -5,8 +5,8 @@ import { ethers } from 'ethers'
 import CryptoAidol from '../../artifacts/contracts/CryptoAidolContracts.sol/CryptoAidol.json'
 
 const style = {
-    headerIcon: `flex items-center justify-end bg-[#f797e7] text-white text-xl px-4 font-black rounded-full shadow-xl hover:bg-[#fcdef7] hover:text-[#f797e7] cursor-pointer`,
-  }
+  mintBottun: `ml-5 w-64 bg-50% bg-[#f797e7] text-white text-xl font-black rounded-full shadow-xl hover:bg-[#fcdef7] hover:text-[#f797e7] cursor-pointer`,
+}
 
 
 function MintBottun () {
@@ -59,7 +59,7 @@ function MintBottun () {
     }
     return (
           <Link href="/">
-            <div className={style.headerIcon}>
+            <div className={style.mintBottun}>
               <button onClick={mint}>
                 mint!</button>
             </div>

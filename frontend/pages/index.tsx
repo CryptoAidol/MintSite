@@ -9,70 +9,29 @@ import MintBottun from '../components/MintBottun';
 import BaseURI from '../components/BaseURI'
 
 const Home: NextPage = () => {
+  const [mintNum, setMintNum] = useState(0);
+  const [saleFlag, setSaleFlag] = useState(false);
   return (
-    // <div className={styles.container}>
-    <div className="">
+    <>
       <Header />
-      <MintBottun />
-      <BaseURI />
-        
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn to Earn&rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="flex flex-wrap justify-center bg-[url('/Cyrptoaidol_BG.png')] bg-no-repeat bg-cover">
+          <div className='px-44 py-44 text-center'>
+            <h1 className="text-sm lg:text-5xl pt-1 text-[#4D4D4D] font-semibold ">Larn To Earn</h1>
+            <h1 className="text-sm lg:text-5xl pt-8 text-[#4D4D4D] font-semibold ">Next Coming soon</h1>
+            <Image className="object-none" src="/Cryptyaidle.svg" alt="Main Image" width={500} height={500}/>
+          </div>
+          <div className="px-44 py-44 bg-[url('/button_area.png')] text-center bg-center bg-contain bg-no-repeat">
+              <Image src="/aidol.png" alt="Main Image" width={300} height={300}/>
+              <h3 className="text-xs lg:text-4xl text-black font-semibold ">NFT Initial Sale</h3>
+              <h1 className="text-sm lg:text-2xl pt-1 text-black font-semibold ">START DATE: Coming soon</h1>
+              <h1 className="text-sm lg:text-2xl pt-1 text-black font-semibold ">14:00(UTC) | 23:00(JST)</h1>
+              <h1 className="text-base lg:text-5xl pt-1 pb-2 text-black font-semibold "> {mintNum} / 3000</h1>
+              <h1><MintBottun /></h1>
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-      <Footer />
-    </div>
-  )
+        <Footer />
+    </>
+  )  
   
 }
 
