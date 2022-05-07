@@ -1,32 +1,54 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
 
-async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+const { ethers } = require("ethers");
+const CryptoAidol = require("../artifacts/contracts/CryptoAidolContracts.sol/CryptoAidol.json"); 
 
-  // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+const contractAddress = '0x71B8d76f5a65C1137F8B9A14097EF7a4Aa739555'
 
-  await greeter.deployed();
+ async function mint(){
+  
+  // eslint-disable-next-line prefer-const
+  const provider = new ethers.providers.Web3Provider(window.ethereum)
 
-  console.log("Greeter deployed to:", greeter.address);
+  await provider.send("eth_requestAccounts", []);
+
+  const signer = provider.getSigner()
+
+  const CryptoAidolContract = new ethers.Contract(contractAddress, CryptoAidol.abi,signer)
+
+  await CryptoAidolContract.mint();
+
+  // blockchain.approve = async function () {
+  //   console.log('ap 1')
+  //   if (typeof window.ethereum !== 'undefined') {
+  //     await this.setSigner()
+  //     console.log('ap 2')
+  //     const contract = new ethers.Contract(
+  //       contractAddress,
+  //       CryptoAidol.abi,
+  //       signer
+  //     )
+  //     console.log('ap 3')
+  //     // const approveTx = await contract.approve(
+  //     //   USDCShibuyaContractAddress,
+  //     //   this.utils.parseUnitsToString(this.rawNftPrice, 'wei'),
+  //     //   overrides
+  //     // )
+  //     // await approveTx.wait()
+  //   }
+  // }
+
+  // blockchain.mint = async function () {
+  //   console.log('mint Nft')
+  //   if (typeof window.ethereum !== 'undefined') {
+  //     await this.setSigner()
+  //     const contract = new ethers.Contract(
+  //       contractAddress,
+  //       CryptoAidol.abi,
+  //       signer
+  //     )
+  //     const tx = await contract.mint()
+  //   }
+  // }
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+mint()
